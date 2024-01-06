@@ -1,9 +1,21 @@
 {
-  "name": "skinmaker",
+  "name": "skinapp",
+  "productName": "skinapp",
   "version": "1.0.0",
-  "description": "Skin Maker",
-  "main": "main.js",
-  "author": "CutzuSD",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "CutzuDev",
+    "email": "alexfarkas05@gmail.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",
@@ -12,13 +24,12 @@
     "@electron-forge/maker-squirrel": "^7.2.0",
     "@electron-forge/maker-zip": "^7.2.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
-    "electron": "^28.1.1",
-    "tailwindcss": "^3.4.1"
-  },
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "@electron-forge/plugin-webpack": "^7.2.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "css-loader": "^6.8.1",
+    "electron": "28.1.1",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.3"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
