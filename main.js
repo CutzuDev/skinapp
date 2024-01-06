@@ -10,33 +10,26 @@ function createWindow() {
     webPreferences: {
       // preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
+      sandbox: false,
+      contextIsolation: false,
     },
   });
 
   win.loadFile(path.join(__dirname, "/src/index.html"));
 }
 
-// Create a new file to copy - you can also copy existing files.
-
+const appFiles = path.join(app.getPath("documents"), "1skinmaker");
 (async () => {
   await app.whenReady();
   createWindow();
-  // fs.mkdir(path.join(app.getPath("documents"), "skinmaker123"));
-  if (!fs.existsSync(path.join(app.getPath("documents"), "1skinmaker"))) {
-    fs.mkdirSync(path.join(app.getPath("documents"), "1skinmaker"));
+  if (!fs.existsSync(appFiles)) {
+    fs.mkdirSync(appFiles);
   }
-
-  // const filePath = path.join(app.getPath("documents"), "skinmaker123");
-  // console.log(filePath);
-  // try {
-  //   fs.writeFileSync(path.join(filePath, "test.txt"), "hi");
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  fs.writeFileSync(path.join(appFiles, "test.txt"), "hi");
 })();
 
 app.on("window-all-closed", () => {
-  // fs.rm(path.join(__dirname, "test.txt"));
+  fs.rmSync(path.join(appFiles, "test.txt"));
   if (process.platform !== "darwin") {
     app.quit();
   }
